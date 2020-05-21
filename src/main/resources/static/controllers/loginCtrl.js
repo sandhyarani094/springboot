@@ -24,7 +24,7 @@ app.controller('loginController', function($scope, $http,$location,$rootScope){
 
 		
 	
-		$http.post("http://localhost:9000/login",$scope.logindetails).then(function(response) {
+		$http.post("https://igit-library-mangement-sys.herokuapp.com/login",$scope.logindetails).then(function(response) {
 			console.log(response);
 			if(response.status==200 && response.data!=""){
 				$rootScope.role=response.data.role;
@@ -44,7 +44,7 @@ app.controller('loginController', function($scope, $http,$location,$rootScope){
 	$scope.saveUser=function(){
 		console.log($scope.User);
 		
-	$http.post("http://localhost:9000/saveUser",$scope.User).then(function(response) {
+	$http.post("https://igit-library-mangement-sys.herokuapp.com/saveUser",$scope.User).then(function(response) {
 		$location.path("/home");
 		swal("Good Job!", "Successfully Registered", "success");
 	});

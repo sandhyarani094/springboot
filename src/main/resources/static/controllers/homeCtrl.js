@@ -13,7 +13,7 @@ app.controller("homeController", function($scope,$http,$location,$rootScope) {
 
 		
 	
-	$http.get("http://localhost:9000/getAllBook").then(function(response) {
+	$http.get("https://igit-library-mangement-sys.herokuapp.com/getAllBook").then(function(response) {
 		$scope.myBooks = response.data;
 		console.log(response.data);
 	});
@@ -27,7 +27,7 @@ app.controller("homeController", function($scope,$http,$location,$rootScope) {
 	$scope.deleteBook=function(bookId){
 		console.log(bookId);
 	
-	$http.post("http://localhost:9000/deleteBook",bookId).then(function(response) {
+	$http.post("https://igit-library-mangement-sys.herokuapp.com/deleteBook",bookId).then(function(response) {
 	    
 //		console.log(response.data);
 		swal("Book deleted succssfully");

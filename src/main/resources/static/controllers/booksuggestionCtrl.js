@@ -6,14 +6,14 @@ app.controller("booksuggestionController", function ($scope, $http, $location) {
     $scope.allbooksbytype=[];
     
     $scope.getBookByAgegroup=function(){
-    $http.post("http://localhost:9000/getAllBookByAgegroup",$scope.agegroup).then(function(response) {
+    $http.post("https://igit-library-mangement-sys.herokuapp.com/getAllBookByAgegroup",$scope.agegroup).then(function(response) {
 		
         console.log(response.data);
         $scope.allbooksbyage=response.data;
     });
 }
 $scope.getBookByBooktype=function(){
-    $http.post("http://localhost:9000/getAllBookByBooktype",$scope.booktype).then(function(response) {
+    $http.post("https://igit-library-mangement-sys.herokuapp.com/getAllBookByBooktype",$scope.booktype).then(function(response) {
 		$scope.allbooksbytype = response.data;
 		console.log(response.data);
     });
