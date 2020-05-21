@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+h3 {
+	text-align: center;
+}
+
+.primary-notice {
+	background: green;
+	text-align: center;
+	color: white;
+	border: 1px solid white;
+}
+
+.warning-notice {
+	background: orange;
+	text-align: center;
+	color: white;
+	border: 1px solid white;
+}
+
+.danger-notice {
+	background: red;
+	text-align: center;
+	color: white;
+	border: 1px solid white;
+}
+</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default bluenavbar">
+			<div class="container-fluid margin-top-10">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#!home">Book Management</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a class="font-white" href="#!home">Home</a></li>
+					<li><a class="font-white" href="#!aboutus">About Us</a></li>
+					<li><a class="font-white" href="#!noticeboard">Notice
+							Board</a></li>
+					<li><a class="font-white" href="#!addbook">Add Book</a></li>
+					<!-- <li><a class="font-white" href="#!ticketbooking">Book
+							Ticket</a></li> -->
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+
+					<li><a class="font-white" href="#!"><span
+							class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div ng-controller="noticeController">
+			<h3>NOTICE BOARD</h3>
+			<div class="row">
+				<div class="col-md-4 primary-notice">
+
+					<div ng-repeat="notice in primarynotices">
+
+
+						<h4>{{notice.type}}</h4>
+						<p>{{notice.notice}}</p>
+
+
+
+					</div>
+				</div>
+				<div class="col-md-4 warning-notice">
+					<div ng-repeat="notice in primarynotices">
+						<h4>{{notice.type}}</h4>
+						<p>{{notice.notice}}</p>
+
+
+					</div>
+				</div>
+				<div class="col-md-4 danger-notice">
+					<div ng-repeat="notice in primarynotices">
+						<h4>{{notice.type}}</h4>
+						<p>{{notice.notice}}</p>
+
+					</div>
+				</div>
+			</div>
+</body>
+
+</html>

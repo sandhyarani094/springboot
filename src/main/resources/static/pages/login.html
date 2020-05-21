@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: url('./asset/images/login1.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	text-align:center;
+	
+}
+b,h2
+{
+color:white;
+padding:4px;
+}
+button:hover {
+	opacity: 0.8;
+}
+
+img.avatar {
+	width: 15%;
+	border-radius: 50%;
+}
+.loginform
+{
+    width: 35%;
+    border: 1px solid white;
+    z-index: 99;
+    float: right;
+    margin-top: 85px;
+    margin-right: 85px;
+    min-height: 450px;
+    border-radius: 50%;
+}
+.imgcontainer {
+	text-align: center;
+	margin: 24px 0 12px 0;
+}
+.heading-login
+{
+font-size:24px;
+color:#fff;
+}
+
+.container {
+	padding: 16px;
+}
+.padding-20
+{
+padding:15%;
+}
+
+</style>
+</head>
+<body>
+    <h2>BOOK MANAGEMENT SYSTEM</h2>
+	<form ng-controller="loginController"class="loginform" name="myForm" novalidate>
+      
+		<div class="imgcontainer">
+
+			<h1 class="heading-login" >LOGIN</h1>
+		</div>
+		<div class="padding-20">
+			<label for="emailid"><b>Email Id</b></label> <input type="email"
+				placeholder="Enter Email Id" ng-model="emailid" name="emailid"
+				class="form-control" required/> 
+
+				<span style="color: red"
+				ng-show="myForm.emailid.$dirty && myForm.emailid.$invalid"> <span
+				ng-show="myForm.emailid.$error.required">Email is required.</span>
+			   </span> 
+<div ng-show="hidediv">			   
+	<label for="password"><b>Password</b></label> <input type="password"
+				placeholder="Enter Password" ng-model="password" name="password"
+				class="form-control" required/>
+				 <span style="color: red"
+				ng-show="myForm.password.$dirty && myForm.password.$invalid"> <span
+				ng-show="myForm.password.$error.required">Password is required.</span>
+			</span>
+			</div>
+
+			<br>
+			<br>
+			<button class="btn btn-primary" ng-click="login()"ng-disabled="myForm.emailid.$dirty && myForm.emailid.$invalid ||  
+myForm.password.$dirty && myForm.password.$invalid">login</button>
+<button class="btn btn-primary"ng-click="loginhide()">Forgot Password</button>
+	<div  ng-hide="hidediv">
+		<h3>Forgot Password</h3>
+		<label for="password"><b>New Password</b></label>
+		<input type="password" name="password1">
+		<label for="password"><b>Confirm Password</b></label>
+		<input type="text" name="password2">
+	</div>
+	<button type="btn btn-primary" class="btn btn-info btn"
+							data-toggle="modal" data-target="#myModal">SIGN UP</button>
+		</div>
+		<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				
+				<div class="modal-body">
+					<form class="addform row" name="myForm" novalidate>
+						
+			
+						
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="name">Name:</label> <input type="text"
+								class="form-control" ng-model="user.name" id="Name"
+								placeholder="Enter user name" name="name" required> <span
+								style="color: red"
+								ng-show="myForm.name.$dirty && myForm.name.$invalid"> <span
+								ng-show="myForm.name.$error.required">Name is required.</span>
+							</span>
+						</div>
+			
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="mailid">mailid:</label> <input type="text"
+								class="form-control" ng-model="user.mailid" id="mailid"
+								placeholder="Enter mailid name" name="mailid" required> <span
+								style="color: red"
+								ng-show="myForm.mailid.$dirty && myForm.mailid.$invalid"> <span
+								ng-show="myForm.mailid.$error.required">mailid is required.</span>
+							</span>
+						</div>
+			
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="password">password:</label> <input type="string"
+								class="form-control" ng-model="user.password" id="password"
+								placeholder="Enter password" name="password" required> <span
+								style="color: red"
+								ng-show="myForm.password.$dirty && myForm.password.$invalid">
+								<span ng-show="myForm.password.$error.required">password
+									is required.</span>
+							</span>
+						</div>
+			
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="phno">phno:</label> <input type="number"
+								class="form-control" ng-model="user.phno" id="phno"
+								placeholder="Enter phno" name="phno" required> <span
+								style="color: red"
+								ng-show="myForm.phno.$dirty && myForm.phno.$invalid"> <span
+								ng-show="myForm.phno.$error.required">phno is required.</span>
+							</span>
+						</div>
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="role">role:</label> <input type="text"
+								class="form-control" ng-model="user.role" id="role"
+								placeholder="Enter role" name="role" required>
+							<span style="color: red"
+								ng-show="myForm.role.$dirty && myForm.role.$invalid">
+								<span ng-show="myForm.role.$error.required">role
+									is required.</span>
+							</span>
+						</div>
+						
+						</form>
+						<button  ng-click="saveUser()" class="btn btn-info">Sign Up</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+				
+					
+				
+			</div>
+
+		</div>
+		
+	</div>
+
+		
+	
+	
+	
+	
+	
+</body>
+</html>

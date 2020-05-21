@@ -1,0 +1,29 @@
+.bluenavbar
+{
+	 background: #012b72;
+    text-align: left;
+    height:90px;
+    
+
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover
+
+{
+	background-color:transparent !important;
+}
+.margin-top-10
+{
+	margin-top:15px;
+}
+.navbar-brand
+{
+	color:white !important;
+	font-weight: bold;
+}
+.font-white
+{
+	color:white !important;
+	
+}
+.row
+{margin:0px !important;}

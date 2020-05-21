@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <nav class="navbar navbar-default bluenavbar">
+        <div class="container-fluid margin-top-10">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#!home">Book Management</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a class="font-white" href="#!home">Home</a></li>
+                <li><a class="font-white" href="#!aboutus">About Us</a></li>
+                <li><a class="font-white" href="#!noticeboard">Notice
+                        Board</a></li>
+                <li><a class="font-white" href="#!addbook">Add Book</a></li>
+                <li><a class="font-white" href="#!ticketbooking">Book
+                        Ticket</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a class="font-white" href="#!"><span
+                        class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div ng-controller="booksuggestionController" >
+        <div class="row">
+            <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <label for="agegroup">Age group:</label>
+                 <select id="agegroup" ng-change="getBookByAgegroup()"
+					name="agegroup" class="form-control"
+					ng-model="agegroup" required>
+					<option value="">select Age Group</option>
+					<option value="<18"><18</option>
+					<option value="18-40">18-40</option>
+					<option value="40-60">40-60</option>
+					<option value=">60">>60</option>
+					<option value="all">All</option>
+                </select> 
+                <!-- <span style="color: red"
+					ng-show="myForm.agegroup.$dirty && myForm.agegroup.$invalid"> <span
+					ng-show="myForm.agegroup.$error.required">agegroup is required.</span>
+                </span> -->
+                <table class="table">
+                    <thead>
+                        <tr class="warning">
+                            
+                            <th>NAME</th>
+                            <th>AUTHOR</th>
+                            <th>BATCHCODE</th>
+                            <th>GST</th>
+                            <th>PUBLICATION</th>
+                            <th>PRICE</th>
+                            
+                            <th>BOOK TYPE</th>
+                           
+                            
+        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="book in allbooksbyage">
+        
+                        
+                            <td>{{book.name}}</td>
+                            <td>{{book.author}}</td>
+                            <td>{{book.batchcode}}</td>
+                            <td>{{book.gst}}</td>
+                            <td>{{book.publication}}</td>
+                            <td>{{book.price}}</td>
+                            
+                            <td>{{book.booktype}}</td>
+                                                    
+                         </tr>
+                    </tbody>
+                </table>
+        
+			</div>
+
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <label for="booktype">Area Of Intrest:</label>
+                 <select id="booktype"ng-change="getBookByBooktype()"
+					name="booktype" class="form-control" ng-model="booktype"
+					required>
+					<option value="">Enter Booktype</option>
+					<option value="story">story</option>
+					<option value="spiritual">spiritual</option>
+					<option value="ritual">ritual</option>
+					<option value="historical">historical</option>
+					<option value="others">others</option>
+					<option value="all">all</option>
+                </select>
+                 <!-- <span style="color: red"
+					ng-show="myForm.booktype.$dirty && myForm.booktype.$invalid"> <span
+					ng-show="myForm.booktype.$error.required">booktype is required.</span>
+                </span> -->
+                <table class="table">
+                    <thead>
+                        <tr class="warning">
+                            
+                            <th>NAME</th>
+                            <th>AUTHOR</th>
+                            <th>BATCHCODE</th>
+                            <th>GST</th>
+                            <th>PUBLICATION</th>
+                            <th>PRICE</th>
+                            <th>AGE GROUP</th>
+                            
+                            
+        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="book in allbooksbytype">
+        
+                        
+                            <td>{{book.name}}</td>
+                            <td>{{book.author}}</td>
+                            <td>{{book.batchcode}}</td>
+                            <td>{{book.gst}}</td>
+                            <td>{{book.publication}}</td>
+                            <td>{{book.price}}</td>
+                            <td>{{book.agegroup}}</td>
+                            
+                            
+                         </tr>
+                    </tbody>
+                </table>
+        
+			</div>
+        </div>
+        </div>
+    </body>
+</html>

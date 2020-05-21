@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.addform {
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+h3 {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<div ng-controller="addbookController">
+		<nav class="navbar navbar-default bluenavbar">
+			<div class="container-fluid margin-top-10">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#!home">Book Management</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a class="font-white" href="#/!">Home</a></li>
+					<li><a class="font-white" href="#!aboutus">About Us</a></li>
+					<li><a class="font-white" href="#!noticeboard">Notice
+							Board</a></li>
+					<li><a class="font-white" href="#!addbook">Add Book</a></li>
+				<!--	<li><a class="font-white" href="#!ticketbooking">Book
+							Ticket</a></li>-->
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+
+					<li><a class="font-white" href="#!"><span
+							class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
+				</ul>
+			</div>
+		</nav>
+		<h3>BOOKMASTER</h3>
+		<form class="addform row" name="myForm" novalidate>
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<label for="id">Id:</label> <input type="number"
+					class="form-control" ng-model="book.id" id="id"
+					placeholder="Enter book id" name="id" required> <span
+					style="color: red" ng-show="myForm.id.$dirty && myForm.id.$invalid">
+					<span ng-show="myForm.id.$error.required">Id is required.</span>
+				</span>
+
+			</div>
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<label for="name">Name:</label> <input type="text"
+					class="form-control" ng-model="book.name" id="Name"
+					placeholder="Enter book name" name="name" required> <span
+					style="color: red"
+					ng-show="myForm.name.$dirty && myForm.name.$invalid"> <span
+					ng-show="myForm.name.$error.required">Name is required.</span>
+				</span>
+			</div>
+
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<label for="author">Author:</label> <input type="text"
+					class="form-control" ng-model="book.author" id="author"
+					placeholder="Enter author name" name="author" required> <span
+					style="color: red"
+					ng-show="myForm.author.$dirty && myForm.author.$invalid"> <span
+					ng-show="myForm.author.$error.required">Author is required.</span>
+				</span>
+			</div>
+
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<label for="batchcode">BatchCode:</label> <input type="string"
+					class="form-control" ng-model="book.batchcode" id="batchcode"
+					placeholder="Enter batchcode" name="batchcode" required> <span
+					style="color: red"
+					ng-show="myForm.batchcode.$dirty && myForm.batchcode.$invalid">
+					<span ng-show="myForm.batchcode.$error.required">Batchcode
+						is required.</span>
+				</span>
+			</div>
+
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<label for="gst">GST:</label> <input type="number"
+					class="form-control" ng-model="book.gst" id="gst"
+					placeholder="Enter gst" name="gst" required> <span
+					style="color: red"
+					ng-show="myForm.gst.$dirty && myForm.gst.$invalid"> <span
+					ng-show="myForm.gst.$error.required">Gst is required.</span>
+				</span>
+			</div>
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<label for="publication">Publication:</label> <input type="text"
+					class="form-control" ng-model="book.publication" id="publication"
+					placeholder="Enter publication" name="publication" required>
+				<span style="color: red"
+					ng-show="myForm.publication.$dirty && myForm.publication.$invalid">
+					<span ng-show="myForm.publication.$error.required">Publication
+						is required.</span>
+				</span>
+			</div>
+
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<label for="price">Price:</label> <input type="number"
+					class="form-control" ng-model="book.price" id="price"
+					placeholder="Enter price" name="price" required> <span
+					style="color: red"
+					ng-show="myForm.price.$dirty && myForm.price.$invalid"> <span
+					ng-show="myForm.price.$error.required">Price is required.</span>
+				</span>
+			</div>
+
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<label for="agegroup">Age group:</label> <select id="agegroup"
+					name="agegroup" class="form-control"
+					ng-model="book.agegroup" required>
+					<option value="">select Age Group</option>
+					<option value="<18"><18</option>
+					<option value="18-40">18-40</option>
+					<option value="40-60">40-60</option>
+					<option value=">60">>60</option>
+					<option value="all">All</option>
+				</select> <span style="color: red"
+					ng-show="myForm.agegroup.$dirty && myForm.agegroup.$invalid"> <span
+					ng-show="myForm.agegroup.$error.required">agegroup is required.</span>
+				</span>
+			</div>
+
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<label for="booktype">Book Type:</label> <select id="booktype"
+					name="booktype" class="form-control" ng-model="book.booktype"
+					required>
+					<option value="">Enter Booktype</option>
+					<option value="story">story</option>
+					<option value="spiritual">spiritual</option>
+					<option value="ritual">ritual</option>
+					<option value="historical">historical</option>
+					<option value="others">others</option>
+					<option value="all">all</option>
+				</select> <span style="color: red"
+					ng-show="myForm.booktype.$dirty && myForm.booktype.$invalid"> <span
+					ng-show="myForm.booktype.$error.required">booktype is required.</span>
+				</span>
+			</div>
+
+
+
+		</form>
+		<div class="row" style="text-align: center;">
+			<button ng-click="saveBook()" class="btn btn-primary">Submit</button>
+		</div>
+
+
+
+	</div>
+
+</body>
+</html>
