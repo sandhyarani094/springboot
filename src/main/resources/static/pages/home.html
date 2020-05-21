@@ -22,7 +22,7 @@ h3 {
 					<li><a class="font-white" href="#!aboutus">About Us</a></li>
 					<li><a class="font-white" href="#!noticeboard">Notice
 							Board</a></li>
-					<li><a class="font-white" ng-show="adminshow" href="#!addbook">Add Book</a></li>
+					<li><a class="font-white"  href="#!addbook">Add Book</a></li>
 					<!-- <li><a class="font-white" href="#!ticketbooking">Book
 							Ticket</a></li> -->
 				</ul>
@@ -47,9 +47,9 @@ h3 {
 					<th>AGE GROUP</th>
 					<th>BOOK TYPE</th>
 					<th>QTY</th>
-					<th  ng-show="adminshow">EDIT</th>
-					<th  ng-show="adminshow">DELETE</th>
-					<th  ng-show="adminshow">ADD TO STOCK</th>
+					<th >EDIT</th>
+					<th >DELETE</th>
+					<th >ADD TO STOCK</th>
 					<th>SELL</th>
 
 
@@ -69,10 +69,10 @@ h3 {
 					<td>{{book.agegroup}}</td>
 					<td>{{book.booktype}}</td>
 					<td>qty</td>
-					<td  ng-show="adminshow"><button class="btn btn-primary" ng-click="editBook(book)">EDIT</button></td>
-					<td  ng-show="adminshow"><button class="btn btn-danger"
+					<td ><button class="btn btn-primary" ng-click="editBook(book)">EDIT</button></td>
+					<td ><button class="btn btn-danger"
 							ng-click="deleteBook(book.id)">DELETE</button></td>
-					<td  ng-show="adminshow"><button type="btn btn-primary" class="btn btn-info btn"
+					<td ><button type="btn btn-primary" class="btn btn-info btn"
 							data-toggle="modal" data-target="#myModal">ADD TO STOCK</button></td>
 					<td>
 						<button type="btn btn-primary" class="btn btn-info btn"
