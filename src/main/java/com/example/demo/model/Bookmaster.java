@@ -2,12 +2,15 @@ package com.example.demo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name="BOOKMASTER")
 public class Bookmaster {
  
 	@Id
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	 @Column(name="ID")
      private Integer id;
 	

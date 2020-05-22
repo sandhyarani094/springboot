@@ -73,7 +73,9 @@ padding:15%;
 				ng-show="myForm.emailid.$dirty && myForm.emailid.$invalid"> <span
 				ng-show="myForm.emailid.$error.required">Email is required.</span>
 			   </span> 
-<div ng-show="hidediv">			   
+		
+
+			   
 	<label for="password"><b>Password</b></label> <input type="password"
 				placeholder="Enter Password" ng-model="password" name="password"
 				class="form-control" required/>
@@ -81,10 +83,9 @@ padding:15%;
 				ng-show="myForm.password.$dirty && myForm.password.$invalid"> <span
 				ng-show="myForm.password.$error.required">Password is required.</span>
 			</span>
+		
 			</div>
-
-			<br>
-			<br>
+		
 			<button class="btn btn-primary" ng-click="login()"ng-disabled="myForm.emailid.$dirty && myForm.emailid.$invalid ||  
 myForm.password.$dirty && myForm.password.$invalid">login</button>
 <button class="btn btn-primary"ng-click="loginhide()">Forgot Password</button>
@@ -94,19 +95,24 @@ myForm.password.$dirty && myForm.password.$invalid">login</button>
 		<input type="password" name="password1">
 		<label for="password"><b>Confirm Password</b></label>
 		<input type="text" name="password2">
+		
 	</div>
 	<button type="btn btn-primary" class="btn btn-info btn"
 							data-toggle="modal" data-target="#myModal">SIGN UP</button>
-		</div>
+	</form>
+	<form ng-controller="loginController" name="myForm" novalidate>
+	
+	
+	
 	
 		
 		<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-lg">
 
 			<!-- Modal content-->
 			<div class="modal-content">
 				
-				<div class="modal-body">
+				<div class="modal-body" style="   height: 300px;">
 					
 						
 			
@@ -143,7 +149,7 @@ myForm.password.$dirty && myForm.password.$invalid">login</button>
 						</div>
 			
 						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
-							<label for="phno">phno:</label> <input type="number"
+							<label for="phno">phno:</label> <input type="text"
 								class="form-control" ng-model="user.phno" id="phno"
 								placeholder="Enter phno" name="phno" required> <span
 								style="color: red"
@@ -163,7 +169,7 @@ myForm.password.$dirty && myForm.password.$invalid">login</button>
 						</div>
 						
 					
-						<button  ng-click="saveUser()" class="btn btn-info">Sign Up</button>
+						<button  ng-click="saveuser()" class="btn btn-info">Sign Up</button>
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				</div>
 					</div>
@@ -173,8 +179,10 @@ myForm.password.$dirty && myForm.password.$invalid">login</button>
 			</div>
 
 		</div>
+		</form>
 		
-	</div>
+	
+
 
 		
 	

@@ -41,11 +41,11 @@ app.controller('loginController', function($scope, $http,$location,$rootScope){
 		
 		
 	}
-	$scope.saveUser=function(){
-		console.log($scope.User);
-		
-	$http.post("https://igit-library-mangement-sys.herokuapp.com/saveUser",$scope.User).then(function(response) {
-		$location.path("/home");
+	$scope.saveuser=function(){
+		console.log($scope.user);
+		$scope.user.id=0;
+	$http.post("https://igit-library-mangement-sys.herokuapp.com/saveUser",$scope.user).then(function(response) {
+		$location.path("/#!");
 		swal("Good Job!", "Successfully Registered", "success");
 	});
 	

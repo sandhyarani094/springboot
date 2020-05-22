@@ -2,13 +2,19 @@ var app = angular.module("myApp");
 app.controller("homeController", function($scope,$http,$location,$rootScope) {
 	$scope.role=$rootScope.role;
 	$scope.adminshow=false;
-	if($scope.role=="admin"){
-		$scope.adminshow=true;
-
-	}
-	else{
-		$scope.adminshow=false;
-	}
+	
+	setTimeout(function(){
+		if($scope.role==="admin"){
+			$scope.adminshow=true;
+			console.log($scope.adminshow);
+		}
+		else{
+			$scope.adminshow=false;
+			console.log($scope.adminshow);
+		}
+		$scope.$apply();
+	},500);
+	
 	$scope.getAllBook=function(){
 
 		
