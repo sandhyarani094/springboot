@@ -4,6 +4,7 @@ app.controller("addbookController", function($scope,$http,$location) {
 	 
 	$scope.saveBook=function(){
 		console.log($scope.book);
+		$scope.user.id=0;
 		
 	$http.post("https://igit-library-mangement-sys.herokuapp.com/saveBook",$scope.book).then(function(response) {
 		$location.path("/home");

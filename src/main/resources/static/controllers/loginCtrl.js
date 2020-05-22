@@ -45,7 +45,7 @@ app.controller('loginController', function($scope, $http,$location,$rootScope){
 		console.log($scope.user);
 		$scope.user.id=0;
 	$http.post("https://igit-library-mangement-sys.herokuapp.com/saveUser",$scope.user).then(function(response) {
-		$location.path("/#!");
+		$location.path("/");
 		swal("Good Job!", "Successfully Registered", "success");
 	});
 	
