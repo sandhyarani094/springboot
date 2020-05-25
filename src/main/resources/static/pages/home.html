@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<style>
-h3 {
-	text-align: center;
-}
-</style>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<style>
+		h3 {
+			text-align: center;
+		}
+	</style>
 </head>
+
 <body>
 
 	<div ng-controller="homeController">
@@ -22,14 +24,15 @@ h3 {
 					<li><a class="font-white" href="#!aboutus">About Us</a></li>
 					<li><a class="font-white" href="#!noticeboard">Notice
 							Board</a></li>
-					<li ng-show="adminshow"><a class="font-white"  href="#!addbook">Add Book</a></li>
+					<li ng-show="adminshow"><a class="font-white" href="#!addbook">Add
+							Book</a></li>
 					<!-- <li><a class="font-white" href="#!ticketbooking">Book
 							Ticket</a></li> -->
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 
-					<li><a class="font-white" href="#!"><span
-							class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
+					<li><a class="font-white" href="#!"><span class="glyphicon glyphicon-log-in"></span> Sign out</a>
+					</li>
 				</ul>
 			</div>
 		</nav>
@@ -47,9 +50,9 @@ h3 {
 					<th>AGE GROUP</th>
 					<th>BOOK TYPE</th>
 					<th>QTY</th>
-					<th >EDIT</th>
-					<th >DELETE</th>
-					<th >ADD TO STOCK</th>
+					<th>EDIT</th>
+					<th>DELETE</th>
+					<th>ADD TO STOCK</th>
 					<th>SELL</th>
 
 
@@ -68,15 +71,14 @@ h3 {
 					<td>{{book.price}}</td>
 					<td>{{book.agegroup}}</td>
 					<td>{{book.booktype}}</td>
-					<td>qty</td>
-					<td ><button class="btn btn-primary" ng-click="editBook(book)">EDIT</button></td>
-					<td ><button class="btn btn-danger"
-							ng-click="deleteBook(book.id)">DELETE</button></td>
-					<td ><button type="btn btn-primary" class="btn btn-info btn"
+					<td>{{book.qty}}</td>
+					<td><button class="btn btn-primary" ng-click="editBook(book)">EDIT</button></td>
+					<td><button class="btn btn-danger" ng-click="deleteBook(book.id)">DELETE</button></td>
+					<td><button type="btn btn-primary" class="btn btn-info btn" ng-click="addstock(book)"
 							data-toggle="modal" data-target="#myModal">ADD TO STOCK</button></td>
 					<td>
-						<button type="btn btn-primary" class="btn btn-info btn"
-							data-toggle="modal" data-target="#myModal">SELL</button>
+						<button type="btn btn-primary" class="btn btn-info btn" data-toggle="modal"
+							data-target="#sellModal">SELL</button>
 					</td>
 				</tr>
 			</tbody>
@@ -84,31 +86,139 @@ h3 {
 
 
 
-	</div>
 
 
-	<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
 
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Modal Header</h4>
+
+
+
+
+
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog modal-lg">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+
+					<div class="modal-body" style="height: 150px;">
+
+						<form name="addstockform" novalidate>
+
+							<p ng-model="tempbook.name">book name:{{tempbook.name}}</p>
+
+
+							<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<label for="qty">quantity:</label> <input type="number" class="form-control"
+									ng-model="addbookstock.qty" id="qty" placeholder="Enter quantity" name="qty"
+									required> <span style="color: red"
+									ng-show="addstockform.qty.$dirty && addstockform.qty.$invalid"> <span
+										ng-show="addstockform.qty.$error.required">quantity is
+										required.</span>
+								</span>
+							</div>
+
+
+							<br>
+
+							<button ng-click="savestock(book)" class="btn btn-info">Submit</button>
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+
+						</form>
+					</div>
 				</div>
-				<div class="modal-body">
-					<p>Some text in the modal.</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
+
+
+
 			</div>
 
 		</div>
+
+
+		<div id="sellModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+					</div>
+					<div class="modal-body">
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="name">Name:</label> <input type="text" class="form-control" ng-model="book.name"
+								id="Name" placeholder="Enter book name" name="name" required> <span style="color: red"
+								ng-show="myForm.name.$dirty && myForm.name.$invalid"> <span
+									ng-show="myForm.name.$error.required">Name is required.</span>
+							</span>
+						</div>
+
+
+
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="batchcode">BatchCode:</label> <input type="string" class="form-control"
+								ng-model="book.batchcode" id="batchcode" placeholder="Enter batchcode" name="batchcode"
+								required>
+							<span style="color: red" ng-show="myForm.batchcode.$dirty && myForm.batchcode.$invalid">
+								<span ng-show="myForm.batchcode.$error.required">Batchcode
+									is required.</span>
+							</span>
+						</div>
+
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="issuedate">issuedate:</label> <input type="date" class="form-control"
+								ng-model="book.issuedate" id="issuedate" placeholder="Enter issuedate" name="issuedate"
+								required> <span style="color: red"
+								ng-show="myForm.issuedate.$dirty && myForm.issuedate.$invalid"> <span
+									ng-show="myForm.issuedate.$error.required">issuedate is required.</span>
+							</span>
+						</div>
+
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="returndate">returndate:</label> <input type="date" class="form-control"
+								ng-model="book.returndate" id="returndate" placeholder="Enter returndate"
+								name="returndate" required> <span style="color: red"
+								ng-show="myForm.returndate.$dirty && myForm.returndate.$invalid"> <span
+									ng-show="myForm.returndate.$error.required">returndate is required.</span>
+							</span>
+						</div>
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="username">username:</label> <input type="text" class="form-control"
+								ng-model="book.username" id="username" placeholder="Enter username" name="username"
+								required>
+							<span style="color: red" ng-show="myForm.username.$dirty && myForm.username.$invalid">
+								<span ng-show="myForm.username.$error.required">username
+									is required.</span>
+							</span>
+						</div>
+
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="mailid">mailid:</label> <input type="email" class="form-control"
+								ng-model="book.mailid" id="mailid" placeholder="Enter mailid" name="mailid" required>
+							<span style="color: red" ng-show="myForm.mailid.$dirty && myForm.mailid.$invalid"> <span
+									ng-show="myForm.mailid.$error.required">mailid is required.</span>
+							</span>
+						</div>
+						<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="phno">phno:</label> <input type="text" class="form-control" ng-model="book.phno"
+								id="phno" placeholder="Enter phno name" name="phno" required> <span style="color: red"
+								ng-show="myForm.phno.$dirty && myForm.phno.$invalid">
+								<span ng-show="myForm.phno.$error.required">phno is
+									required.</span>
+							</span>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">BUY</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
 	</div>
-
-	
-
-
 </body>
+
 </html>

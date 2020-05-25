@@ -38,6 +38,9 @@ public class Bookmaster {
 	 @Column(name="AGEGROUP")
 	 private String agegroup;
 	 
+	 @Column(name="QTY")
+	 private Integer qty=1;
+	 
 	public Integer getId() {
 		return id;
 	}
@@ -93,18 +96,19 @@ public class Bookmaster {
 	public void setAgegroup(String agegroup) {
 		this.agegroup = agegroup;
 	}
+	
+	public Integer getQty() {
+		return qty;
+	}
+	public void setQty(Integer qty) {
+		this.qty = qty;
+	}
 	public Bookmaster() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "Bookmaster [id=" + id + ", name=" + name + ", author=" + author + ", gst=" + gst + ", price=" + price
-				+ ", batchcode=" + batchcode + ", publication=" + publication + ", booktype=" + booktype + ", agegroup="
-				+ agegroup + "]";
-	}
 	public Bookmaster(Integer id, String name, String author, String gst, Integer price, String batchcode,
-			String publication, String booktype, String agegroup) {
+			String publication, String booktype, String agegroup, Integer qty) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -115,7 +119,14 @@ public class Bookmaster {
 		this.publication = publication;
 		this.booktype = booktype;
 		this.agegroup = agegroup;
+		this.qty = qty;
+	}
+	@Override
+	public String toString() {
+		return "Bookmaster [id=" + id + ", name=" + name + ", author=" + author + ", gst=" + gst + ", price=" + price
+				+ ", batchcode=" + batchcode + ", publication=" + publication + ", booktype=" + booktype + ", agegroup="
+				+ agegroup + ", qty=" + qty + "]";
 	}
 	
-		
+			
 }

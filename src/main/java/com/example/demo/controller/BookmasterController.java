@@ -5,14 +5,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Bookmaster;
-import com.example.demo.model.Employee;
+import com.example.demo.model.Bookstock;
 import com.example.demo.model.Resp;
 import com.example.demo.repository.BookRepository;
 
@@ -69,13 +68,49 @@ public class BookmasterController {
 		return "Book added successfully";
 	}
 	 
-	@PatchMapping("/saveBook")
-	public String saveBookByPatch(@RequestBody Bookmaster book) {
-		bookrepo.save(book);
+	@PostMapping("/addStock")
+	public Resp addStock(@RequestBody Bookstock book) {
+		//bookrepo.save(book);
+	Integer previousstock=bookrepo.getBookQtyById(book.getBookid());
+	System.out.println(previousstock);
+	Integer newstock=previousstock + book.getBookqty();
+    	System.out.println(book.getBookid()+ " "+newstock);
+	bookrepo.setBookQtyById(book.getBookid(), newstock);
+    Resp resp=new Resp();
+    resp.setResponseValue("Book Added To Stock");
+    return resp;
 		
-		return "Book added successfully";
+		
+	
 	}	
 	
+	@PostMapping("/removeStock")
+	public Resp removeStock(@RequestBody Bookstock book) {
+		//bookrepo.save(book);
+	Integer previousstock=bookrepo.getBookQtyById(book.getBookid());
+	System.out.println(previousstock);
+	 Resp resp=new Resp();
+	if(previousstock>=book.getBookqty())
+	{
+		
 	
+	Integer newstock=previousstock - book.getBookqty();
+    	System.out.println(book.getBookid()+ " "+newstock);
+	bookrepo.setBookQtyById(book.getBookid(), newstock);
+   
+    resp.setResponseValue("success");
+   
+	}
+	else {
+		resp.setResponseValue("error");
+	    
+		
+	}
+	return resp;
+		
+		
+	
+	}	
+
 
 }

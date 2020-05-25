@@ -100,6 +100,16 @@ h3 {
 					ng-show="myForm.price.$error.required">Price is required.</span>
 				</span>
 			</div>
+			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<label for="qty">quantity:</label> <input type="text"
+								class="form-control" ng-model="book.qty" id="qty"
+								placeholder="Enter quantity" name="qty" required> <span
+								style="color: red"
+								ng-show="myForm.qty.$dirty && myForm.qty.$invalid"> <span
+								ng-show="myForm.qty.$error.required">quantity is
+									required.</span>
+							</span>
+						</div>
 
 			<div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				<label for="agegroup">Age group:</label> <select id="agegroup"

@@ -2,6 +2,8 @@ var app = angular.module("myApp");
 app.controller("homeController", function($scope,$http,$location,$rootScope) {
 	$scope.role=$rootScope.role;
 	$scope.adminshow=false;
+	$scope.tempbook;
+	$scope.addbookstock;
 	
 	setTimeout(function(){
 		if($scope.role==="admin"){
@@ -41,5 +43,34 @@ app.controller("homeController", function($scope,$http,$location,$rootScope) {
 		
 	});
 	}
+	
+	$scope.addstock=function(book){
+		$scope.tempbook=book;
+		$scope.tempbookname=book.name;
+		console.log($scope.tempbookname);
+		setTimeout(function(){
+		$scope.$apply();
+		},500);
+	
+//	$http.post("http://localhost9000/addStock",$scope.temp).then(function(response) {
+//		
+//		swal("Good Job!", "Stock Added", "success");
+//	});
+//	
+		
+	}
+	$scope.savestock=function(){
+		
+		var temp={
+			"bookid": $scope.tempbook.id,
+			"bookqty": $scope.addbookstock.qty
+		  }
+		$http.post("http://localhost9000/addStock",temp).then(function(response) {
+					
+					swal("Good Job!", "Stock Added", response.value);
+				});
+	}
+	
+	
 
 });
